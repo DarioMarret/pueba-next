@@ -1,6 +1,7 @@
 import { useState, useEffect, ChangeEvent } from "react"
 import { Col, Container, Row, Form, Button, InputGroup, FormControl, Modal as ModalSpinner } from "react-bootstrap";
 import { FiUser, FiKey } from "react-icons/fi";
+import axios from "axios"
 
 export default function FormCliente() {
     const [Cliente, setCliente] = useState({
@@ -16,13 +17,17 @@ export default function FormCliente() {
 
     const handleTextImput = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.name === 'cedula' && e.target.value.length === 10){
-            fetch(`https://turnos.manta.gob.ec/consultacedula/`+e.target.value)
+            axios.get(`https://turnos.manta.gob.ec/consultacedula/`+e.target.value,
+            {
+                headers: {
+                    'Accept':'*/*',
+                }
+            })
             .then(response =>{
                 console.log(response)
             }).catch(err=>{
                 console.log(err)
             })
-            
         }
     }
     return (
