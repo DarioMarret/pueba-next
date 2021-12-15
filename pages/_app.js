@@ -1,7 +1,10 @@
 import '../styles/globals.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'antd/dist/antd.css';
+import FormCliente from "../components/Form"
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function MyApp() {
+  return <FormCliente />
 }
 
 export default MyApp
